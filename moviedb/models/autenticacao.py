@@ -40,13 +40,15 @@ def normalizar_email(email: str) -> Optional[str]:
 
 
 class User(db.Model, BasicRepositoryMixin, UserMixin):
-    __tablename__ = "usuarios"
+    __tablename__ = "usuario"
 
     id = Column(Uuid(as_uuid=True), primary_key=True, default=uuid.uuid4)
     nome = Column(String(60), nullable=False)
     email_normalizado = Column(String(180), nullable=False, unique=True, index=True)
     password_hash = Column(String(256), nullable=False)
     ativo = Column(Boolean, nullable=False, default=False, server_default='false')
+
+    avaliacoes = relationship("avaliacao", back_populates="usuario")
 
     com_foto = Column(Boolean, default=False, server_default='false')
     foto_base64 = Column(Text, nullable=True, default=None)
