@@ -40,7 +40,7 @@ def normalizar_email(email: str) -> Optional[str]:
 
 
 class User(db.Model, BasicRepositoryMixin, UserMixin):
-    __tablename__ = "usuario"
+    __tablename__ = "usuarios"
 
     id = Column(Uuid(as_uuid=True), primary_key=True, default=uuid.uuid4)
     nome = Column(String(60), nullable=False)
