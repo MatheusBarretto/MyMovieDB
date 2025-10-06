@@ -55,7 +55,7 @@ class Avalicoes(db.Model, BasicRepositoryMixin):
     comentario = Column(String(255))
     recomenda = Column(Boolean, default=False, nullable=False)
     idFilme = Column(Integer, ForeignKey('filmes.id'), nullable=False)
-    idUsuario = Column(Integer, ForeignKey('usuario.id'), nullable=False)
+    idPessoa = Column(Integer, ForeignKey('pessoa.id'), nullable=False)
 
-    usuario = relationship("Usuario", back_populates="avaliacoes")
+    pessoa = relationship("Pessoa", back_populates="avaliacoes")
     filme = relationship("Filme", back_populates="avaliacoes")
